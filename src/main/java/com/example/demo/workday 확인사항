@@ -1,3 +1,17 @@
 1. header 규칙 다른 부분
 - underbar 이거나 띄어쓰기. 통일되지 않고 원래 이렇게 내려주는지? -> underbar로 통일되었으면.
 - 정해진 header는 불변
+2.   파일 형식 다름.. 데이터 타입 뒤에 언더바 필요
+    006a_Organization_
+    010_disciplinary_actions
+    012_award_data
+    022_org_role_data
+3. OrgRoleData - assignedPositonId 스펠링..
+4. zip 파일도 내려오는지? zip 파일에 포함된 파일은 또 안내려오는게 맞는지?
+
+--------------------------------------------------------------------------------------------
+1. INT-HR-001  worker data : identification File - 주민등록증 관련 정보?
+
+
+
+

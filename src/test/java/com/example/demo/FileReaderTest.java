@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class FileReaderTest {
 
-    private final String dirPath = "C:\\Users\\hyj\\workday\\ftp\\outbound";
+    private final String dirPath = "D:\\workday\\outbound";
     @Autowired
     FileReader reader;
 
@@ -66,7 +66,10 @@ class FileReaderTest {
                 String subDirPath = dirPath + "\\" + subDir.getName() + "\\";
                 for (File conversionData : subDir.listFiles()) {
                     String fileName = conversionData.getName();
-
+                    String fileType = StringUtils.substringAfterLast(fileName ,".");
+                    if(!fileType.equals("csv")){
+                      continue;
+                    }
                     List<String> list = reader.readCsvFile(subDirPath + fileName, '^', "UTF-8");
                     List<String> createQuery = new ArrayList<>();
                     for (int i = 0; i < list.size(); i++) {
@@ -151,7 +154,10 @@ class FileReaderTest {
                 String subDirPath = dirPath + "\\" + subDir.getName() + "\\";
                 for (File conversionData : subDir.listFiles()) {
                     String fileName = conversionData.getName();
-
+                  String fileType = StringUtils.substringAfterLast(fileName ,".");
+                  if(!fileType.equals("csv")){
+                    continue;
+                  }
                     List<String> list = reader.readCsvFile(subDirPath + fileName, '^', "UTF-8");
                     List<String> createQuery = new ArrayList<>();
                     for (int i = 0; i < list.size(); i++) {
