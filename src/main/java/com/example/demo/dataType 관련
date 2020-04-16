@@ -2,11 +2,26 @@ staffing transaction - 직원 채용관련..
 LoA: Leave of Absence
 RFL: Return from Leave
 
+
+* Job 관련 용어 정리
 Job profile :  직무 ?
 Job Family: 직군?
 Job title:  직위, 조직 내 서열
 Job Position:
     1. 직급 - 직위 세부 분류
     2. 직책 - 조직에서의 책임과 권한
+
+
+* 각종 날짜에 대한 정리
+- 연합입사일
+- 근속 기준일
+- 입사일
+
+
+공통코드
+- 001_position_data
+- 005_job_profile
+- 005b_job_family
+
 
 
