@@ -73,7 +73,26 @@ class FileReaderTest {
 
     }
 
-    @Test
+  @Test
+  void printTableName() throws IOException{
+    File dir = new File(dirPath);
+    for (File subDir : dir.listFiles()) {
+      if (subDir.isDirectory()) {
+        String subDirPath = dirPath + "\\" + subDir.getName() + "\\";
+        for (File conversionData : subDir.listFiles()) {
+          String fileName = conversionData.getName();
+          String tableName = StringUtils.substringBeforeLast(fileName, "_");
+          tableName = StringUtils.substringAfterLast(tableName,"-");
+
+            System.out.println("TRUNCATE TABLE " +tableName+ ";");
+          }
+        }
+      }
+    }
+
+
+
+  @Test
     public void createFieldNameSet() throws IOException {
         File dir = new File(dirPath);
         for (File subDir : dir.listFiles()) {
@@ -132,7 +151,7 @@ class FileReaderTest {
                         while (field.matches("\\S+\\s+.+")) {
                             int idx = field.indexOf(" ");
                             String changeChar = field.substring(idx + 1, idx + 2);
-                            field = field.replaceFirst("\\s\\D", changeChar.toUpperCase());
+                            field = field.replaceFirst("\\s\\S", changeChar.toUpperCase());
                         }
                         StringBuilder columnBuilder = new StringBuilder();
                         columnBuilder.append("#{");
@@ -175,7 +194,7 @@ class FileReaderTest {
                         while (field.matches("\\S+\\s+.+")) {
                             int idx = field.indexOf(" ");
                             String changeChar = field.substring(idx + 1, idx + 2);
-                            field = field.replaceFirst("\\s\\D", changeChar.toUpperCase());
+                            field = field.replaceFirst("\\s\\S", changeChar.toUpperCase());
                         }
                         StringBuilder columnBuilder = new StringBuilder();
                         columnBuilder.append(".");
@@ -220,7 +239,7 @@ class FileReaderTest {
                         while (field.matches("\\S+\\s+.+")) {
                             int idx = field.indexOf(" ");
                             String changeChar = field.substring(idx + 1, idx + 2);
-                            field = field.replaceFirst("\\s\\D", changeChar.toUpperCase());
+                            field = field.replaceFirst("\\s\\S", changeChar.toUpperCase());
                         }
                         StringBuilder columnBuilder = new StringBuilder();
                         columnBuilder.append("private String ");
@@ -276,7 +295,7 @@ class FileReaderTest {
                         StringBuilder columnBuilder = new StringBuilder();
                         columnBuilder.append("`");
                         columnBuilder.append(column);
-                        columnBuilder.append("` VARCHAR(50) NOT NULL");
+                        columnBuilder.append("` VARCHAR(50)");
                         createQuery.add(columnBuilder.toString());
                     }
                     String createInner = createQuery.toString();
