@@ -1,0 +1,32 @@
+- krafton_am 관련 테이블
+
+fnd_distribution_list
+fnd_dl_and_dl
+fnd_organizations_new
+fnd_organization_manager
+fnd_users_new
+fnd_user_and_dl
+fnd_user_and_organization
+
+- krafton_hr
+ass_assignment_history
+ass_secondary_manager
+
+hr_lookup_type
+hr_lookup_type_l
+hr_lookup_value
+hr_lookup_value_l
+
+org_organization_history
+org_organization_supervisor
+
+per_employee
+per_name
+per_phone
+per_private
+
+- 휴가에서 사용할 수도 있음
+per_continuous_history
+
+- 휴가관련 테이블 확인 필요
+

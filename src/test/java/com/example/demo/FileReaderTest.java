@@ -82,13 +82,30 @@ class FileReaderTest {
         for (File conversionData : subDir.listFiles()) {
           String fileName = conversionData.getName();
           String tableName = StringUtils.substringBeforeLast(fileName, "_");
-          tableName = StringUtils.substringAfterLast(tableName,"-");
+         // tableName = StringUtils.substringAfterLast(tableName,"-");
 
-            System.out.println("TRUNCATE TABLE " +tableName+ ";");
+            System.out.println(tableName);
           }
         }
       }
     }
+
+  @Test
+  void printTruncateTableName() throws IOException{
+    File dir = new File(dirPath);
+    for (File subDir : dir.listFiles()) {
+      if (subDir.isDirectory()) {
+        String subDirPath = dirPath + "\\" + subDir.getName() + "\\";
+        for (File conversionData : subDir.listFiles()) {
+          String fileName = conversionData.getName();
+          String tableName = StringUtils.substringBeforeLast(fileName, "_");
+          tableName = StringUtils.substringAfterLast(tableName,"-");
+
+          System.out.println("TRUNCATE TABLE " +tableName+ ";");
+        }
+      }
+    }
+  }
 
 
 
