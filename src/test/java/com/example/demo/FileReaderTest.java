@@ -21,22 +21,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class FileReaderTest {
 
     private final String dirPath = "D:\\workday\\outbound";
-    private final String filePath = "D:\\workday\\outbound\\INT-HR-001\\INT-HR-001_Personal_Data_20200401-00.csv";
+    private final String filePath = "D:\\workhour\\test.csv";
     @Autowired
     FileReader reader;
+
+
 
     @Test
     void restTest() throws Exception {
       FlatFileItemReader<Object> reader = new FlatFileItemReader<>();
       reader.setResource(new FileSystemResource(filePath));
-      DefaultLineMapper<Object> lineMapper = new DefaultLineMapper<>();
-      DelimitedLineTokenizer delimitedLineTokenizer = new DelimitedLineTokenizer("^");
-      lineMapper.setLineTokenizer(delimitedLineTokenizer);
-      reader.setLineMapper(lineMapper);
-      reader.setLinesToSkip(1);
-      reader.open(new ExecutionContext());
 
-      reader.read();
 
     }
 
@@ -72,6 +67,98 @@ class FileReaderTest {
       }
 
     }
+
+
+
+  @Test
+  void printCsvHeaderCoumns() throws IOException{
+    File dir = new File(dirPath);
+    for (File subDir : dir.listFiles()) {
+      if (subDir.isDirectory()) {
+        String subDirPath = dirPath + "\\" + subDir.getName() + "\\";
+        for (File conversionData : subDir.listFiles()) {
+          String fileName = conversionData.getName();
+          if(!StringUtils.substringAfterLast(fileName,".").equals("csv")){
+            continue;
+          }
+          List<String> list = reader.readCsvFile(subDirPath + fileName, '^', "UTF-8");
+          List<String> createQuery = new ArrayList<>();
+          for (int i = 0; i < list.size(); i++) {
+            String column = list.get(i);
+            StringBuilder columnBuilder = new StringBuilder();
+            columnBuilder.append("\"");
+            columnBuilder.append(column);
+            columnBuilder.append("\",");
+            System.out.print(columnBuilder.toString());
+          }
+
+          System.out.println();
+
+        }
+      }
+    }
+
+  }
+
+  @Test
+  void printCsvHeaderCoumnsStatement() throws IOException{
+    File dir = new File(dirPath);
+    for (File subDir : dir.listFiles()) {
+      if (subDir.isDirectory()) {
+        String subDirPath = dirPath + "\\" + subDir.getName() + "\\";
+        for (File conversionData : subDir.listFiles()) {
+          String fileName = conversionData.getName();
+          if(!StringUtils.substringAfterLast(fileName,".").equals("csv")){
+            continue;
+          }
+          List<String> list = reader.readCsvFile(subDirPath + fileName, '^', "UTF-8");
+          List<String> createQuery = new ArrayList<>();
+          String tableName = StringUtils.substringBeforeLast(fileName, "_");
+          System.out.print("\"INSERT INTO ");
+          System.out.print(tableName);
+          System.out.print(" (");
+
+
+          for (int i = 0; i < list.size() -1; i++) {
+            String column = list.get(i);
+
+            column = StringUtils.trim(column);
+            while (column.matches("\\S+\\s+.+")) {
+              column = column.replaceFirst("\\s", "_");
+            }
+            System.out.print(column);
+            System.out.print(",");
+          }
+          System.out.print(list.get(list.size() -1));
+
+
+          System.out.print(" ) VALUES (");
+          for(int i = 0; i < list.size() -1; i++){
+            System.out.print(" ?, ");
+          }
+          System.out.print(" ?");
+          System.out.print(")\",");
+          for (int i = 0; i < list.size()-1; i++) {
+            String column = list.get(i);
+            StringBuilder columnBuilder = new StringBuilder();
+            columnBuilder.append("\"");
+            columnBuilder.append(column);
+            columnBuilder.append("\",");
+            System.out.print(columnBuilder.toString());
+          }
+          String lastcolumn = list.get(list.size() -1);
+          StringBuilder columnBuilderlast = new StringBuilder();
+          columnBuilderlast.append("\"");
+          columnBuilderlast.append(lastcolumn);
+          columnBuilderlast.append("\"");
+          System.out.print(columnBuilderlast.toString());
+          System.out.println();
+
+        }
+      }
+    }
+
+  }
 
   @Test
   void printTableName() throws IOException{
@@ -326,4 +413,9 @@ class FileReaderTest {
         }
 
     }
+
+
+
+
+
 }
