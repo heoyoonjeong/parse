@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class FileReaderTest {
 
-    private final String dirPath = "D:\\workday\\outbound";
+    private final String dirPath = "D:\\outbound";
     private final String filePath = "D:\\workhour\\test.csv";
     @Autowired
     FileReader reader;
@@ -475,6 +475,48 @@ class FileReaderTest {
     }
 
   }
+
+  @Test
+  public void printFileName() throws IOException {
+    File dir = new File(dirPath);
+    for (File subDir : dir.listFiles()) {
+      if (subDir.isDirectory()) {
+        String subDirPath = dirPath + "\\" + subDir.getName() + "\\";
+        for (File conversionData : subDir.listFiles()) {
+          String fileFullName = conversionData.getName();
+          String fileName = StringUtils.substringBeforeLast(fileFullName ,".");
+          String fileType = StringUtils.substringAfterLast(fileFullName ,".");
+          if(!fileType.equals("csv")) continue;
+          String dataType = StringUtils.substringBeforeLast(fileFullName,"_");
+          String timeZone = StringUtils.substringAfterLast(dataType,"_");
+          String seq = StringUtils.substringAfterLast(fileName, "-");
+          Integer seqLen  = seq.length();
+          StringBuilder stringBuilder = new StringBuilder();
+          stringBuilder.append("(\"");
+          stringBuilder.append(dataType);
+          stringBuilder.append("\", \"");
+          stringBuilder.append(fileType);
+          stringBuilder.append("\", ");
+          if(timeZone.equals("KST") || timeZone.equals("GMT") || timeZone.equals("PST")){
+            stringBuilder.append("\"");
+            stringBuilder.append(timeZone);
+            stringBuilder.append("\", ");
+          }else {
+            stringBuilder.append("null");
+            stringBuilder.append(", ");
+          }
+          stringBuilder.append("99, ");
+          stringBuilder.append(seqLen);
+          stringBuilder.append(", now(), now()),");
+
+          System.out.println(stringBuilder);
+
+        }
+      }
+    }
+
+  }
+
 
 
 }
