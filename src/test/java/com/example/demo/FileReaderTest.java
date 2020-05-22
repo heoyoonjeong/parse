@@ -114,9 +114,11 @@ class FileReaderTest {
           List<String> list = reader.readCsvFile(subDirPath + fileName, '^', "UTF-8");
           List<String> createQuery = new ArrayList<>();
           String tableName = StringUtils.substringBeforeLast(fileName, "_");
+          tableName = StringUtils.substringAfterLast(tableName,"-");
+
           System.out.print("\"INSERT INTO ");
           System.out.print(tableName);
-          System.out.print(" (");
+          System.out.print(" ( File_Path, ");
 
 
           for (int i = 0; i < list.size() -1; i++) {
@@ -132,12 +134,13 @@ class FileReaderTest {
           System.out.print(list.get(list.size() -1));
 
 
-          System.out.print(" ) VALUES (");
+          System.out.print(" ) VALUES ( ?,");
           for(int i = 0; i < list.size() -1; i++){
             System.out.print(" ?, ");
           }
           System.out.print(" ?");
           System.out.print(")\",");
+          System.out.print("\"FIle_Path\", ");
           for (int i = 0; i < list.size()-1; i++) {
             String column = list.get(i);
             StringBuilder columnBuilder = new StringBuilder();
@@ -413,9 +416,65 @@ class FileReaderTest {
         }
 
     }
+  @Test
+  void alterColumnTable() throws IOException {
+    File dir = new File(dirPath);
+    for (File subDir : dir.listFiles()) {
+      if (subDir.isDirectory()) {
+        String subDirPath = dirPath + "\\" + subDir.getName() + "\\";
+        for (File conversionData : subDir.listFiles()) {
+          String fileName = conversionData.getName();
+          String tableName = StringUtils.substringBeforeLast(fileName, "_");
+          tableName = StringUtils.substringAfterLast(tableName,"-");
+          if(!StringUtils.substringAfterLast(fileName,".").equals("csv")){
+            continue;
+          }
+          // parser.testParse("INT-HR-001_Personal_Data_20200317-000.csv");
+          String lastQuery = "ALTER TABLE ";
+          lastQuery += tableName;
+          lastQuery += " ADD Last_Updated DATETIME NULL DEFAULT CURRENT_TIMESTAMP";
+          System.out.println(lastQuery);
+          String lastQuery2 = "ALTER TABLE ";
+          lastQuery2 += tableName;
+          lastQuery2 += " ADD File_Path VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci'";
+          System.out.println(lastQuery2);
+
+        }
+      }
+    }
+
+  }
 
 
+  @Test
+  void alterSTATUSColumnTable() throws IOException {
+    File dir = new File(dirPath);
+    List<String> tableList = new ArrayList<>();
+    for (File subDir : dir.listFiles()) {
+      if (subDir.isDirectory()) {
+        String subDirPath = dirPath + "\\" + subDir.getName() + "\\";
+        for (File conversionData : subDir.listFiles()) {
+          String fileName = conversionData.getName();
+          String tableName = StringUtils.substringBeforeLast(fileName, "_");
+          tableName = StringUtils.substringAfterLast(tableName,"-");
+          if(!StringUtils.substringAfterLast(fileName,".").equals("csv")){
+            continue;
+          }
+          // parser.testParse("INT-HR-001_Personal_Data_20200317-000.csv");
+          if(tableList.contains(tableName)){
+            continue;
+          }
+          tableList.add(tableName);
+          String lastQuery2 = "ALTER TABLE ";
+          lastQuery2 += tableName;
+          lastQuery2 += " ADD CONSTRAINT " + tableName + "_pk PRIMARY KEY (File_Path, ";
+          System.out.println(lastQuery2);
 
+        }
+      }
+    }
+
+  }
 
 
 }

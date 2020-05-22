@@ -1,32 +1,59 @@
-'ukjung',
-'bonghc',
-'elflee',
-'marineek',
-'yusungchi',
-'kreat1470',
-'florinmystini',
-'hanuks',
-'giggsan',
-'sally',
-'skywalker',
-'meong1989',
-'justin1',
-'rje_12',
-'kbino_7',
-'degitalb',
-'klaude',
-'tmept2002',
-'byullee220',
-'paul',
-'sungha0402',
-'sky59835',
-'minsang5749',
-'sccb',
-'wwwjjan',
-'ggulsoft',
-'cor2738',
-'jini0317',
-'ntgreak'
+ALTER TABLE CODE_Job_Categories ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE CODE_Translated_Tenant ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 001_Hew_Hire_Data ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 001_Personal_Data ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 001_Phone_Data ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 001_Position_Data ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 001_Term_Data ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+
+ALTER TABLE 002_Staffing_Transaction_Corrected ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 002_Staffing_Transaction_New ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 002_Staffing_Transaction_Rescind ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 002b_LoA_and_RFL_Rescinded_Transaction ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 002b_LoA_Corrected_Transaction ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 002b_LoA_Transaction ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 002b_RFL_Transaction ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 005b_Job_Family ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 005_Job_Profile ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 006_Sup_Org_Full ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+
+ALTER TABLE 006a_Organization ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 007_Location ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+
+ALTER TABLE 020_FutureHire_Personal_Data ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 020_FutureHire_Phone ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+ALTER TABLE 020_FutureHire_Position ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+
+ALTER TABLE 022_Org_Role_Data ADD Status VARCHAR(50) NULL DEFAULT 'WAIT' COLLATE 'utf8mb4_unicode_ci';
+
+
+  INSERT INTO EA_WORKFLOWS (
+      DRAFT_ID,
+      USER_ID,
+      POSITION_ID,
+      ORGANIZATION_ID,
+      ORDER_SEQ,
+      FINAL_APPROVER_FLAG,
+      WORKFLOW_TYPE_CODE,
+      APPROVAL_TYPE_CODE,
+
+	  CAN_DELETE_YN,
+      ENABLED_FLAG
+    )
+    select
+    draft_id,
+    1214,
+    32,
+    5803,
+    999,
+    FINAL_APPROVER_FLAG,
+    WORKFLOW_TYPE_CODE,
+    APPROVAL_TYPE_CODE,
+    CAN_DELETE_YN,
+    ENABLED_FLAG
+
+    from EA_WORKFLOWS
+    where
 
 
 
@@ -43,39 +70,53 @@
 
 
 
-'atree',
-'cloudchoi79',
-'pofhjg',
-'seiyounggee',
-'jwheo',
-'hsj4260',
-'danielpark',
-'gururu',
-'tmdahek',
-'kbhong',
-'kadol00',
-'yoshiky83',
-'great450',
-'leaf',
-'ultraahn7',
-'sikim618',
-'hsw9030',
-'noktroh',
-'brightnoa',
-'psyyoung1',
-'nono8563',
-'splab86',
-'yuyu427',
-'eum_taeil',
-'stream',
-'enakelakf',
-'ywpark965',
-'gprud5472',
-'jaemin0411',
-'koolmail79',
-'hyeonmin7223',
-'son',
-'dew',
-'jwkim.pnix',
-'kongms81'
 
+
+
+
+
+
+
+truncate table 001_Hew_Hire_Data;
+truncate table 001_Personal_Data;
+truncate table 001_Personal_Data;
+truncate table 001_Personal_Data;
+truncate table 001_Personal_Data;
+truncate table 001_Phone_Data;
+truncate table 001_Phone_Data;
+truncate table 001_Phone_Data;
+truncate table 001_Phone_Data;
+truncate table 001_Position_Data;
+truncate table 001_Position_Data;
+truncate table 001_Position_Data;
+truncate table 001_Position_Data;
+truncate table 001_Term_Data;
+truncate table 001a_Photo;
+
+truncate table 002_Staffing_Transaction_Corrected;
+truncate table 002_Staffing_Transaction_New;
+truncate table 002_Staffing_Transaction_New;
+truncate table 002_Staffing_Transaction_Rescind;
+truncate table 002b_LoA_and_RFL_Rescinded_Transaction;
+truncate table 002b_LoA_Corrected_Transaction;
+truncate table 002b_LoA_Transaction;
+truncate table 002b_RFL_Transaction;
+truncate table 005b_Job_Family;
+truncate table 005_Job_Profile;
+truncate table 006_Sup_Org_Full;
+truncate table 006a_Organization;
+truncate table 007_Location;
+truncate table 020_FutureHire_Personal_Data;
+truncate table 020_FutureHire_Personal_Data;
+truncate table 020_FutureHire_Personal_Data;
+truncate table 020_FutureHire_Phone;
+truncate table 020_FutureHire_Phone;
+truncate table 020_FutureHire_Phone;
+truncate table 020_FutureHire_Position;
+truncate table 020_FutureHire_Position;
+truncate table 020_FutureHire_Position;
+truncate table 022_Org_Role_Data;
+
+
+ALTER TABLE 006a_Organization ADD Last_Updated DATETIME NULL DEFAULT CURRENT_TIMESTAMP
+ALTER TABLE 006a_Organization ADD File_Path VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8
