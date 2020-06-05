@@ -1,27 +1,27 @@
-staffing transaction - 직원 채용관련..
-LoA: Leave of Absence
-RFL: Return from Leave
+INSERT INTO data_type_in_progress values
 
 
-* Job 관련 용어 정리
-Job profile :  직무 ?
-Job Family: 직군?
-Job title:  직위, 조직 내 서열
-Job Position:
-    1. 직급 - 직위 세부 분류
-    2. 직책 - 조직에서의 책임과 권한
-"Address's Postal Code"
-
-* 각종 날짜에 대한 정리
-- 연합입사일
-- 근속 기준일
-- 입사일
-
-
-공통코드
-- 001_position_data
-- 005_job_profile
-- 005b_job_family
-
-
-
+'INT-HR-001_Personal_Data_GMT', 0, '20200601', 'INT-HR-001_Personal_Data_GMT_20200601-00.csv', 'WAIT', 'D:\\outbound\\\\INT-HR-001\\INT-HR-001_Personal_Data_GMT_20200601-00.csv', 'N'),
+('INT-HR-001_Personal_Data_KST', 0, '20200601', 'INT-HR-001_Personal_Data_KST_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-001\\INT-HR-001_Personal_Data_KST_20200601-00.csv', 'N'),
+('INT-HR-001_Personal_Data_PST', 0, '20200601', 'INT-HR-001_Personal_Data_PST_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-001\\INT-HR-001_Personal_Data_PST_20200601-00.csv', 'N'),
+('INT-HR-001_Phone_Data_GMT', 0, '20200601', 'INT-HR-001_Phone_Data_GMT_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-001\\INT-HR-001_Phone_Data_GMT_20200601-00.csv', 'N'),
+('INT-HR-001_Phone_Data_KST', 0, '20200601', 'INT-HR-001_Phone_Data_KST_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-001\\INT-HR-001_Phone_Data_KST_20200601-00.csv', 'N'),
+('INT-HR-001_Phone_Data_PST', 0, '20200601', 'INT-HR-001_Phone_Data_PST_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-001\\INT-HR-001_Phone_Data_PST_20200601-00.csv', 'N'),
+('INT-HR-001_Position_Data_GMT', 0, '20200601', 'INT-HR-001_Position_Data_GMT_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-001\\INT-HR-001_Position_Data_GMT_20200601-00.csv', 'N'),
+('INT-HR-001_Position_Data_KST', 0, '20200601', 'INT-HR-001_Position_Data_KST_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-001\\INT-HR-001_Position_Data_KST_20200601-00.csv', 'N'),
+('INT-HR-001_Position_Data_PST', 0, '20200601', 'INT-HR-001_Position_Data_PST_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-001\\INT-HR-001_Position_Data_PST_20200601-00.csv', 'N'),
+('INT-HR-002_Staffing_Transaction_New', 0, '20200601', 'INT-HR-002_Staffing_Transaction_New_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-002\\INT-HR-002_Staffing_Transaction_New_20200601-00.csv', 'N'),
+('INT-HR-002b_LoA_and_RFL_Rescinded_Transaction', 0, '20200601', 'INT-HR-002b_LoA_and_RFL_Rescinded_Transaction_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-002b\\INT-HR-002b_LoA_and_RFL_Rescinded_Transaction_20200601-00.csv', 'N'),
+('INT-HR-002b_LoA_Corrected_Transaction', 0, '20200601', 'INT-HR-002b_LoA_Corrected_Transaction_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-002b\\INT-HR-002b_LoA_Corrected_Transaction_20200601-00.csv', 'N'),
+('INT-HR-002b_LoA_Transaction', 0, '20200601', 'INT-HR-002b_LoA_Transaction_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-002b\\INT-HR-002b_LoA_Transaction_20200601-00.csv', 'N'),
+('INT-HR-002b_RFL_Corrected_Transaction', 0, '20200601', 'INT-HR-002b_RFL_Corrected_Transaction_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-002b\\INT-HR-002b_RFL_Corrected_Transaction_20200601-00.csv', 'N'),
+('INT-HR-002b_RFL_Transaction', 0, '20200601', 'INT-HR-002b_RFL_Transaction_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-002b\\INT-HR-002b_RFL_Transaction_20200601-00.csv', 'N'),
+('INT-HR-005b_Job_Family', 0, '20200601', 'INT-HR-005b_Job_Family_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-005\\INT-HR-005b_Job_Family_20200601-00.csv', 'N'),
+('INT-HR-005_Job_Profile', 0, '20200601', 'INT-HR-005_Job_Profile_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-005\\INT-HR-005_Job_Profile_20200601-00.csv', 'N'),
+('INT-HR-006a_Sup_Org_As_of_Date_Full', 0, '20200601', 'INT-HR-006a_Sup_Org_As_of_Date_Full_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-006\\INT-HR-006a_Sup_Org_As_of_Date_Full_20200601-00.csv', 'N'),
+('INT-HR-006_Sup_Org_Full', 0, '20200601', 'INT-HR-006_Sup_Org_Full_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-006\\INT-HR-006_Sup_Org_Full_20200601-00.csv', 'N'),
+('INT-HR-006a_Organization', 0, '20200601', 'INT-HR-006a_Organization_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-006a\\INT-HR-006a_Organization_20200601-00.csv', 'N'),
+('INT-HR-007_Location', 0, '20200601', 'INT-HR-007_Location_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-007\\INT-HR-007_Location_20200601-00.csv', 'N'),
+('INT-HR-020_FutureHire_Personal_Data', 0, '20200601', 'INT-HR-020_FutureHire_Personal_Data_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-020\\INT-HR-020_FutureHire_Personal_Data_20200601-00.csv', 'N'),
+('INT-HR-020_FutureHire_Position', 0, '20200601', 'INT-HR-020_FutureHire_Position_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-020\\INT-HR-020_FutureHire_Position_20200601-00.csv', 'N'),
+('INT-HR-022_Org_Role_Data', 0, '20200601', 'INT-HR-022_Org_Role_Data_20200601-00.csv', 'WAIT', 'D:\\outbound\\INT-HR-022\\INT-HR-022_Org_Role_Data_20200601-00.csv', 'N')
